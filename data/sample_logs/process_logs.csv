@@ -1,0 +1,6 @@
+timestamp,host,username,process_name,parent_process,command_line
+2026-03-20T08:05:00,host1,adi,chrome.exe,explorer.exe,chrome.exe https://mail.example.com
+2026-03-20T08:12:00,host2,dana,teams.exe,explorer.exe,teams.exe
+2026-03-20T09:03:00,host1,adi,powershell.exe,explorer.exe,powershell.exe -enc SQBFAFgA
+2026-03-20T09:04:30,host1,adi,cmd.exe,powershell.exe,cmd.exe /c whoami
+2026-03-20T10:03:00,host3,ron,notepad.exe,explorer.exe,notepad.exe notes.txt
