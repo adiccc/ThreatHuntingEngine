@@ -4,11 +4,11 @@ from src.detection.detection_engine import DetectionEngine
 from src.detection.rules.brute_force_success_rule import (
     BruteForceFollowedBySuccessRule,
 )
-from src.detection.rules.suspicious_process_rule import (
-    SuspiciousProcessExecutionRule,
-)
 from src.detection.rules.rare_outbound_connection_rule import (
     RareOutboundConnectionRule,
+)
+from src.detection.rules.suspicious_process_rule import (
+    SuspiciousProcessExecutionRule,
 )
 from src.ingestion.log_loader import LogLoader
 from src.normalization.event_normalizer import EventNormalizer
@@ -16,6 +16,8 @@ from src.parsers.auth_parser import AuthenticationLogParser
 from src.parsers.network_parser import NetworkLogParser
 from src.parsers.process_parser import ProcessLogParser
 from src.reporting.console_reporter import ConsoleReporter
+from src.reporting.json_reporter import JsonReporter
+from src.reporting.markdown_reporter import MarkdownReporter
 
 
 def main():
@@ -51,6 +53,13 @@ def main():
     alerts = detection_engine.run(all_events)
 
     ConsoleReporter.print_alerts(alerts)
+
+    JsonReporter.write(alerts, "reports/alerts.json")
+    MarkdownReporter.write(alerts, "reports/incident_report.md")
+
+    print("\nReports written successfully:")
+    print("- reports/alerts.json")
+    print("- reports/incident_report.md")
 
 
 if __name__ == "__main__":
